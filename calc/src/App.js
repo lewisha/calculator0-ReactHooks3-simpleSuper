@@ -1,31 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 
-function App() {
+export default function App() {
   const [result, setResult] = useState("");
   const inputRef = useRef(null);
 
   useEffect(() => inputRef.current.focus());
 
-  function handleClick(e) {
+  const handleClick = (e) => {
     setResult(result.concat(e.target.name));
-  }
+  };
 
-  function backspace() {
+  const backspace = () => {
     setResult(result.slice(0, -1));
-  }
+  };
 
-  function clear() {
+  const clear = () => {
     setResult("");
-  }
+  };
 
-  function calculate() {
+  const calculate = () => {
     try {
       setResult(eval(result).toString());
     } catch (error) {
       setResult("Error");
     }
-  }
+  };
 
   return (
     <div className="calc-app">
@@ -93,4 +93,3 @@ function App() {
   );
 }
 
-export default App;
